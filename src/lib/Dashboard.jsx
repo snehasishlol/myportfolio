@@ -27,6 +27,7 @@ import {
     FiBell,
     FiChevronDown,
 } from 'react-icons/fi';
+import ToggleColorModeButton from './ToggleColorModeButton';
 
 export default function Dashboard({
     title,
@@ -145,18 +146,12 @@ const MobileNav = ({ title, user_name, user_avatar, user_text, onOpen, ...rest }
             <Text
                 display={{ base: 'flex', md: 'none' }}
                 fontSize="2xl"
-                fontFamily="monospace"
-                fontWeight="bold">
+                fontWeight="semibold">
                 {title || "Dashboard"}
             </Text>
 
             <HStack spacing={{ base: '0', md: '6' }}>
-                <IconButton
-                    size="lg"
-                    variant="ghost"
-                    aria-label="open menu"
-                    icon={<FiBell />}
-                />
+                <ToggleColorModeButton/>
                 <Flex alignItems={'center'}>
                     <Menu>
                         <MenuButton

@@ -40,7 +40,7 @@ export default function Hero() {
                             bg={"green.400"}
                             borderRadius={"md"}
                             color={"white"}
-                            p={8}
+                            p={3}
                             textDecor={"none"}
                             _hover={{
                                 bg: "green.500",
