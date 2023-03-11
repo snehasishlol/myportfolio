@@ -9,9 +9,7 @@ import {
     Flex,
     HStack,
     VStack,
-    Icon,
     useColorModeValue,
-    Link,
     Drawer,
     DrawerContent,
     Text,
@@ -24,10 +22,10 @@ import {
 } from '@chakra-ui/react';
 import {
     FiMenu,
-    FiBell,
     FiChevronDown,
 } from 'react-icons/fi';
 import ToggleColorModeButton from './ToggleColorModeButton';
+import { Link } from '@chakra-ui/next-js';
 
 export default function Dashboard({
     title,
@@ -84,7 +82,7 @@ const SidebarContent = ({ title, items, onClose, ...rest }) => {
                 <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
             </Flex>
             {items?.map((item) => (
-                <NavItem key={item.name} icon={item.icon} href={item.href}>
+                <NavItem key={item.name} icon={item.icon} href={item.href} active={item.active}>
                     {item.name}
                 </NavItem>
             ))}
@@ -92,25 +90,31 @@ const SidebarContent = ({ title, items, onClose, ...rest }) => {
     );
 };
 
-const NavItem = ({ icon, href, children, ...rest }) => {
+const NavItem = ({ icon, href, active, children, ...rest }) => {
+
     return (
         <Link href={`${href}`} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
             <Flex
-                align="center"
-                p="4"
-                mx="4"
-                borderRadius="lg"
-                role="group"
+                align={"center"}
+                borderRadius={"md"}
                 cursor="pointer"
+                bg={active ? "blue.300" : "transparent"}
                 _hover={{
-                    bg: 'cyan.400',
-                    color: 'white',
+                    bg: active ? "blue.400" : useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
                 }}
+                m={2}
                 {...rest}>
-                {icon && (
-                    {icon}
-                )}
-                {children}
+                <HStack>
+                    {icon && (
+                        <IconButton
+                            variant={"ghost"}
+                            p={0}
+                            m={0}>
+                            {icon}
+                        </IconButton>
+                    )}
+                    <Text>{children}</Text>
+                </HStack>
             </Flex>
         </Link>
     );
@@ -144,7 +148,7 @@ const MobileNav = ({ title, user_name, user_avatar, user_text, onOpen, ...rest }
             </Text>
 
             <HStack spacing={{ base: '0', md: '6' }}>
-                <ToggleColorModeButton/>
+                <ToggleColorModeButton />
                 <Flex alignItems={'center'}>
                     <Menu>
                         <MenuButton
@@ -171,9 +175,7 @@ const MobileNav = ({ title, user_name, user_avatar, user_text, onOpen, ...rest }
                                 </Box>
                             </HStack>
                         </MenuButton>
-                        <MenuList
-                            bg={useColorModeValue('white', 'gray.900')}
-                            borderColor={useColorModeValue('gray.200', 'gray.700')}>
+                        <MenuList>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem>Settings</MenuItem>
                             <MenuDivider />

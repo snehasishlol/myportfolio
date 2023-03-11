@@ -31,7 +31,7 @@ export default function Hero() {
                         This is a site made using the NextJS + ChakraUI Template made with 💚 by <Link href={"https://snehasish.cf"}>@snehasishkun</Link>
                     </Text>
                     <Stack
-                        direction={'column'}
+                        direction={'row'}
                         spacing={3}
                         align={'center'}
                         alignSelf={'center'}
@@ -48,6 +48,19 @@ export default function Hero() {
                             }}
                             href={"https://github.com/snehasishkun/nextjs-chakraui-template"}>
                             Start Using Now
+                        </Link>
+                        <Link
+                            bg={"blue.400"}
+                            borderRadius={"md"}
+                            color={"white"}
+                            p={3}
+                            textDecor={"none"}
+                            _hover={{
+                                bg: "blue.500",
+                                textDecor: "none"
+                            }}
+                            href={"/dashboard"}>
+                            Dashboard
                         </Link>
                     </Stack>
                 </Stack>

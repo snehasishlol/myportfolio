@@ -8,7 +8,7 @@ export default function ToggleColorModeButton() {
     const { colorMode, toggleColorMode } = useColorMode();
 
     return (
-        <IconButton onClick={toggleColorMode}>
+        <IconButton onClick={toggleColorMode} variant={"ghost"}>
             {
                 colorMode === 'light' ?
                     <MoonIcon />
