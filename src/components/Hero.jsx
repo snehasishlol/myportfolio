@@ -36,7 +36,16 @@ export default function Hero() {
                         align={'center'}
                         alignSelf={'center'}
                         position={'relative'}>
-                        <Link href={"https://github.com/snehasishkun/nextjs-chakraui-template"}>
+                        <Link
+                            bg={"green.400"}
+                            borderRadius={"md"}
+                            color={"white"}
+                            textDecor={"none"}
+                            _hover={{
+                                bg: "green.500",
+                                textDecor: "none"
+                            }}
+                            href={"https://github.com/snehasishkun/nextjs-chakraui-template"}>
                             Start Using Now
                         </Link>
                     </Stack>
