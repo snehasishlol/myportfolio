@@ -108,14 +108,7 @@ const NavItem = ({ icon, href, children, ...rest }) => {
                 }}
                 {...rest}>
                 {icon && (
-                    <Icon
-                        mr="4"
-                        fontSize="16"
-                        _groupHover={{
-                            color: 'white',
-                        }}
-                        as={icon}
-                    />
+                    {icon}
                 )}
                 {children}
             </Flex>
