@@ -23,19 +23,17 @@ import {
     MenuList,
 } from '@chakra-ui/react';
 import {
-    FiHome,
-    FiCompass,
     FiMenu,
     FiBell,
     FiChevronDown,
 } from 'react-icons/fi';
 
-const LinkItems = [
-    { name: 'Home', icon: FiHome, href: '/home' },
-    { name: 'Explore', icon: FiCompass, href: '/explore' },
-];
-
 export default function Dashboard({
+    title,
+    items,
+    user_name,
+    user_text,
+    user_avatar,
     children,
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,6 +42,8 @@ export default function Dashboard({
             <SidebarContent
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
+                title={title}
+                items={items}
             />
             <Drawer
                 autoFocus={false}
@@ -54,11 +54,10 @@ export default function Dashboard({
                 onOverlayClick={onClose}
                 size="full">
                 <DrawerContent>
-                    <SidebarContent onClose={onClose} />
+                    <SidebarContent onClose={onClose} title={title} items={items} />
                 </DrawerContent>
             </Drawer>
-            {/* mobilenav */}
-            <MobileNav onOpen={onOpen} />
+            <MobileNav onOpen={onOpen} title={title} user_name={user_name} user_text={user_text} user_avatar={user_avatar} />
             <Box ml={{ base: 0, md: 60 }} p="4">
                 {children}
             </Box>
@@ -66,7 +65,7 @@ export default function Dashboard({
     );
 }
 
-const SidebarContent = ({ title, onClose, ...rest }) => {
+const SidebarContent = ({ title, items, onClose, ...rest }) => {
     return (
         <Box
             transition="3s ease"
@@ -79,13 +78,13 @@ const SidebarContent = ({ title, onClose, ...rest }) => {
             {...rest}>
             <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-                    {title||"Dashboard"}
+                    {title || "Dashboard"}
                 </Text>
                 <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
             </Flex>
-            {LinkItems.map((link) => (
-                <NavItem key={link.name} icon={link.icon}>
-                    {link.name}
+            {items.map((item) => (
+                <NavItem key={item.name} icon={item.icon} href={item.href}>
+                    {item.name}
                 </NavItem>
             ))}
         </Box>
@@ -123,7 +122,7 @@ const NavItem = ({ icon, href, children, ...rest }) => {
     );
 };
 
-const MobileNav = ({ title, onOpen, ...rest }) => {
+const MobileNav = ({ title, user_name, user_avatar, user_text, onOpen, ...rest }) => {
     return (
         <Flex
             ml={{ base: 0, md: 60 }}
@@ -148,7 +147,7 @@ const MobileNav = ({ title, onOpen, ...rest }) => {
                 fontSize="2xl"
                 fontFamily="monospace"
                 fontWeight="bold">
-                {title||"Dashboard"}
+                {title || "Dashboard"}
             </Text>
 
             <HStack spacing={{ base: '0', md: '6' }}>
@@ -167,18 +166,16 @@ const MobileNav = ({ title, onOpen, ...rest }) => {
                             <HStack>
                                 <Avatar
                                     size={'sm'}
-                                    src={
-                                        'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                                    }
+                                    src={user_avatar}
                                 />
                                 <VStack
                                     display={{ base: 'none', md: 'flex' }}
                                     alignItems="flex-start"
                                     spacing="1px"
                                     ml="2">
-                                    <Text fontSize="sm">Justina Clark</Text>
+                                    <Text fontSize="sm">{user_name || "User"}</Text>
                                     <Text fontSize="xs" color="gray.600">
-                                        Admin
+                                        {user_text || " "}
                                     </Text>
                                 </VStack>
                                 <Box display={{ base: 'none', md: 'flex' }}>
@@ -191,7 +188,6 @@ const MobileNav = ({ title, onOpen, ...rest }) => {
                             borderColor={useColorModeValue('gray.200', 'gray.700')}>
                             <MenuItem>Profile</MenuItem>
                             <MenuItem>Settings</MenuItem>
-                            <MenuItem>Billing</MenuItem>
                             <MenuDivider />
                             <MenuItem>Sign out</MenuItem>
                         </MenuList>
