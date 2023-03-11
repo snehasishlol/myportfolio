@@ -98,9 +98,9 @@ const NavItem = ({ icon, href, active, children, ...rest }) => {
                 align={"center"}
                 borderRadius={"md"}
                 cursor="pointer"
-                bg={active ? "blue.300" : "transparent"}
+                bg={active ? "whiteAlpha.200" : "transparent"}
                 _hover={{
-                    bg: active ? "blue.400" : useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
+                    bg: useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
                 }}
                 m={2}
                 {...rest}>
