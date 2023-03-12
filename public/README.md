@@ -1,0 +1,1 @@
+### This is the public directory, all files will be available as: `/file_name`
