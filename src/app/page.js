@@ -1,11 +1,12 @@
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import FadeInVisible from '@/components/FadeInVisible';
+import Home from '@/pages/Home';
 
 export default function HomePage() {
 	return (
 		<>
-			<Navbar />
-			<Hero />
+			<FadeInVisible>
+				<Home />
+			</FadeInVisible>
 		</>
 	)
 }
