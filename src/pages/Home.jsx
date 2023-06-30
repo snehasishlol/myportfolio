@@ -149,7 +149,7 @@ export default function Home() {
                         </TabPanel>
                         <TabPanel index={'projects'}>
                             {
-                                projects?.map((project) => (
+                                projects?.map((project, i) => (
                                     <Box
                                         px={4}
                                         py={5}
@@ -160,6 +160,7 @@ export default function Home() {
                                         rounded="md"
                                         w={'full'}
                                         my={2}
+                                        key={i}
                                     >
                                         <Flex justifyContent="space-between">
                                             <Flex>
