@@ -195,7 +195,7 @@ export default function Home() {
                                 <Button as={Link} href={'https://instagram.com/snehasishlol'} color={'pink.300'} variant={'unstyled'} leftIcon={<FiInstagram />}>Instagram</Button>
                                 <Button as={Link} href={'https://twitter.com/snehasishlol'} color={'blue.300'} variant={'unstyled'} leftIcon={<FiTwitter />}>Twitter</Button>
                                 <Button as={Link} href={'https://youtube.com/@snehasishlol'} color={'red.300'} variant={'unstyled'} leftIcon={<FiYoutube />}>YouTube</Button>
-                                <Button as={Link} href={'https://spotify.com/snehasishlol'} color={'green.300'} variant={'unstyled'} leftIcon={<BsSpotify />}>Spotify</Button>
+                                <Button as={Link} href={'https://open.spotify.com/user/31momuam5cf3a6gdw6r47sdcs55q'} color={'green.300'} variant={'unstyled'} leftIcon={<BsSpotify />}>Spotify</Button>
                                 <Button as={Link} href={'https://discord.gg/Mxczhv4p4M'} color={'purple.300'} variant={'unstyled'} leftIcon={<BsDiscord />}>Discord</Button>
                             </VStack>
                         </TabPanel>
